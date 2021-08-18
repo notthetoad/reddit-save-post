@@ -15,11 +15,7 @@ username
 password
 ```
 
-Then run `$ python3 main.py` in console and the program will prompt you to fill in the credentials.
-
-Go to project's directory and run:
-
-`$ python3 main.py`
+Then go to project's directory and run `$ python3 main.py` in console and the program will prompt you to fill in the credentials.
 
 ## What it does and what's it for
 It takes user's credentials to get access to saved posts and comments on their reddit account. Downloads them and saves them in `sqlite3` database.
