@@ -42,5 +42,7 @@ def main():
     save_posts(conn, posts)
     save_comments(conn, comments)
 
+    conn.close()
+
 if __name__ == '__main__':
     main()
