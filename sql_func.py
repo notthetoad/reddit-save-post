@@ -1,7 +1,6 @@
 import sqlite3
 from sqlite3 import Error
 
-# TODO
 create_post_table = """CREATE TABLE IF NOT EXISTS post (
                         id integer PRIMARY KEY,
                         post_id integer UNIQUE,

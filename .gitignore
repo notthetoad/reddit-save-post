@@ -4,3 +4,5 @@ test_db.db
 todo.md
 credentials.json
 reddit_saved.db
+test.py
+test_user.py
