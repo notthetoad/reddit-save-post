@@ -6,7 +6,7 @@ from hashlib import sha256
 
 # TODO make get_user_credentials function that gives User class credentials to login on initialization in main.py when refactoring to OOP
 class User:
-
+    
     def __init__(self, client_id, client_secret, username, password, user_agent):
         self.client_id = client_id
         self.client_secret = client_secret
