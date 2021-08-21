@@ -1,6 +1,8 @@
 # reddit-save-post
 Python script for downloading user's saved posts and comments from reddit account.
 
+### User credentials, if saved, are stored in json file and are not secure, be sure to not share it with anyone.
+
 ## Dependencies
 > python3 
 > praw
