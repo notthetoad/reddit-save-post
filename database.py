@@ -42,7 +42,7 @@ insert_comment = """INSERT INTO comment (
 class Db:
     
     def __init__(self, db_file):
-        self.connection = sqlite3.connection(db_file)
+        self.connection = sqlite3.connect(db_file)
         cursor = self.connection.cursor()
         for stmt in statements:
             cursor.execute(stmt)
@@ -61,9 +61,9 @@ class Db:
                     post.selftext
                 )
                 cursor.execute(insert_post, values)
-            except:
+            except Error:
                 pass
-        cursor.commit()
+        self.connection.commit()
 
     def save_comments(self, comments):
         cursor = self.connection.cursor()
@@ -76,6 +76,6 @@ class Db:
                     comm.score
                 )
                 cursor.execute(insert_comment, values)
-            except:
+            except Error:
                 pass
-        cursor.commit()
+        self.connection.commit()
