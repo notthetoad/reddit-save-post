@@ -3,8 +3,7 @@ from sqlite3 import Error
 
 statements = [
     """CREATE TABLE IF NOT EXISTS post (
-        id integer,
-        post_id integer PRIMARY KEY,
+        post_id text PRIMARY KEY,
         title text,
         fullname text,
         subreddit text,
@@ -13,8 +12,7 @@ statements = [
         selftext text
         ); """,
     """CREATE TABLE IF NOT EXISTS comment (
-        id integer,
-        comment_id integer PRIMARY KEY,
+        comment_id text PRIMARY KEY,
         body text,
         permalink text,
         score integer

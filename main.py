@@ -7,16 +7,25 @@ from database import Db
 from user import User
 from authorize import Authorize
 
+def get_saved(reddit):
+    posts = []
+    comments = []
+
+    for item in reddit.user.me().saved(limit=None):
+        if isinstance(item, Submission):
+            posts.insert(0, item)
+        elif isinstance(item, Comment):
+            comments.insert(0, item)
+        else:
+            pass
+    return posts, comments
+
 def main():
-    db = Db('test_class.db')
+    db = Db('reddit_saved.db')
     auth = Authorize()
     user_credentials = auth.get_user_credentials()
     user = User(**user_credentials)
-    reddit_user = user.login()
-    saved = reddit_user.user.me().saved(limit=5)
-
-    posts = [p for p in saved if type(p) == Submission]
-    comments = [c for c in saved if type(c) == Comment]
+    posts, comments = get_saved(user.login())
 
     db.save_posts(posts)
     db.save_comments(comments)
