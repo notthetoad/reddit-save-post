@@ -2,7 +2,7 @@ import praw
 import praw.exceptions
 import json
 
-from hashlib import sha256
+from praw.models import Submission, Comment
 
 class User:
 
@@ -25,3 +25,16 @@ class User:
         except RedditAPIException as e:
             print(e)
         return reddit
+
+    def get_saved(self, reddit_instance):
+        posts = []
+        comments = []
+
+        for item in reddit_instance.user.me().saved(limit=3):
+            if isinstance(item, Submission):
+                posts.insert(0, item)
+            elif isinstance(item, Comment):
+                comments.insert(0, item)
+            else:
+                pass
+        return posts, comments
