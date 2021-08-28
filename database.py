@@ -1,3 +1,4 @@
+import csv
 import sqlite3
 from sqlite3 import Error
 
@@ -77,3 +78,17 @@ class Db:
             except Error:
                 pass
         self.connection.commit()
+
+    def export_items(self, db_name, sql):
+        items = self.connection.execute(sql)
+        col_title = [desc[0] for desc in items.description]
+        f_name = db_name.split('.')[0]
+        f_item = sql.split()
+        with open(f"{f_name}_{f_item[-1]}.csv", 'w') as f:
+            writer = csv.writer(f)
+            writer.writerow(col_title)
+            writer.writerows(items)
+
+    def export_to_csv(self, db_name):
+        self.export_items(db_name, 'SELECT * FROM post')
+        self.export_items(db_name, 'SELECT * FROM comment')

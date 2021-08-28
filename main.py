@@ -7,6 +7,7 @@ from user import User
 from authorize import Authorize
 
 def main():
+
     parser = argparse.ArgumentParser(description="Saves posts and comments from user's reddit account.")
     parser.add_argument('-c', '--credentials', dest='credentials', metavar='[file]', required=False, help="json file name with credentials e.g. \"credentials.json\"")
     parser.add_argument('-d', '--database', dest='database', metavar='[name]', required=False, help="choose a name for your database file")
@@ -34,6 +35,7 @@ def main():
     db = Db(db_name)
     if args.export:
         db.export_to_csv(db_name)
+
     user = User(**user_credentials)
     posts, comments = user.get_saved(user.login())
 

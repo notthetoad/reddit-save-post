@@ -30,7 +30,7 @@ class User:
         posts = []
         comments = []
 
-        for item in reddit_instance.user.me().saved(limit=3):
+        for item in reddit_instance.user.me().saved(limit=None):
             if isinstance(item, Submission):
                 posts.insert(0, item)
             elif isinstance(item, Comment):
