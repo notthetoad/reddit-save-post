@@ -34,7 +34,6 @@ def main():
     db = Db(db_name)
     if args.export:
         db.export_to_csv(db_name)
-
     user = User(**user_credentials)
     posts, comments = user.get_saved(user.login())
 
