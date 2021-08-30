@@ -1,5 +1,7 @@
 import praw
 import json
+import argparse
+import sys
 
 from getpass import getpass
 from database import Db
@@ -11,13 +13,13 @@ def main():
     parser = argparse.ArgumentParser(description="Saves posts and comments from user's reddit account.")
     parser.add_argument('-c', '--credentials', dest='credentials', metavar='[file]', required=False, help="json file name with credentials e.g. \"credentials.json\"")
     parser.add_argument('-d', '--database', dest='database', metavar='[name]', required=False, help="choose a name for your database file")
-    parser.add_argument('--export', dest='export', required=False, action='store_false', help="export database to Comma Separated Values (CSV) file")
-    # parser.add_argument('--format', dest='format', required=False, action='store_false', help="show format for credentials file")
+    parser.add_argument('--export', dest='export', required=False, action='store_true', help="export database to Comma Separated Values (CSV) file")
+    parser.add_argument('--format', dest='format', required=False, action='store_true', help="show format for credentials file")
     args = parser.parse_args()
 
-    # if args.format:
-    #     sys.stdout.write('{\n\t"username": username,\n\t"password": password,\n\t"client_id": client_id,\n\t"client_secret": client_secret\n\t"user_agent": user_agent\n}\n')
-    #     sys.exit()
+    if args.format:
+        sys.stdout.write('{\n\t"username": username,\n\t"password": password,\n\t"client_id": client_id,\n\t"client_secret": client_secret\n\t"user_agent": user_agent\n}\n')
+        sys.exit()
 
     auth = Authorize()
     user_credentials = {}
