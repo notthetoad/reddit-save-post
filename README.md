@@ -4,7 +4,7 @@ Python script for downloading user's saved posts and comments from reddit accoun
 ### User credentials, if saved, are stored in json file and are not secure, be sure to not share it with anyone.
 
 ## Dependencies
-> python3 
+> python3
 > praw
 
 ## How to use it
@@ -17,7 +17,7 @@ username
 password
 ```
 
-Then go to project's directory and run `$ python3 main.py` in console and the program will prompt you to fill in the credentials.
+Then go to project's directory and run `$ python main.py` in console and the program will prompt you to fill in the credentials, or run `$ python main.py -h` for help and optional arguments.
 
 ## What it does and what's it for
 It takes user's credentials to get access to saved posts and comments on their reddit account. Downloads them and saves them in `sqlite3` database.
