@@ -30,7 +30,7 @@ def main():
     else:
         user_credentials = auth.get_user_credentials()
 
-    db_name = 'reddit_saved.db'
+    db_name = 'test.db'
     if args.database:
         db_name = args.database + '.db'
 
