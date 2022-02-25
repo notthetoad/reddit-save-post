@@ -6,6 +6,7 @@ import os
 
 from database import Db
 from user import User
+from authorize import Credentials
 
 def parse_arguments():
     parser = argparse.ArgumentParser(description="Saves posts and comments from user's reddit account.")
@@ -27,6 +28,9 @@ def main():
 
     db_name = 'test.db'
     db = Db(db_name)
+    user_info = {}
+    creds = Credentials(user_info)
+    creds.get_user_credentials()
 
     if parsed_args.credentials:
         if os.path.exists(parsed_args.credentials):
@@ -42,7 +46,7 @@ def main():
         sys.exit()
 
     if parsed_args.database:
-        db_name = args.database + '.db'
+        db_name = parsed_args.database + '.db'
 
     if parsed_args.export:
         db.export_to_csv(db_name)
