@@ -1,16 +1,14 @@
 import praw
 import praw.exceptions
-import json
 
 from praw.models import Submission, Comment
 from authorize import UserCredentials
 
-class User:
+class User(UserCredentials):
 
     def __init__(self, file):
         self.file = file
-       # self.user_data = self.authorize()
-        self.user_data = {**UserCredentials().get_credentials(file)}
+        self.user_data = self.get_credentials(file)
         self.r_instance = self.login()
 
     def login(self):

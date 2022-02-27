@@ -22,7 +22,9 @@ def main():
         user = User(parsed_args.credentials)
     else:
         user = UserCredentials().get_credentials()
-    print(user)
+    posts, comments = user.get_saved()
+    db.save_posts(posts)
+    db.save_comments(comments)
 
     if parsed_args.format:
         sys.stdout.write('{\n\t"username": username,\n\t"password": password,\n\t"client_id": client_id,\n\t"client_secret": client_secret\n\t"user_agent": user_agent\n}\n')
