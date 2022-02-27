@@ -3,18 +3,15 @@ import praw.exceptions
 import json
 
 from praw.models import Submission, Comment
+from authorize import UserCredentials
 
 class User:
 
     def __init__(self, file):
         self.file = file
-        self.user_data = self.authorize()
+       # self.user_data = self.authorize()
+        self.user_data = {**UserCredentials().get_credentials(file)}
         self.r_instance = self.login()
-
-    def authorize(self):
-        with open(self.file) as f:
-            data = json.load(f)
-            return {**data}
 
     def login(self):
         try:
@@ -41,3 +38,6 @@ class User:
             else:
                 pass
         return posts, comments
+
+    def __str__(self):
+        return f"{self.user_data}"
