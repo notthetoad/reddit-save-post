@@ -6,9 +6,8 @@ from authorize import UserCredentials
 
 class User(UserCredentials):
 
-    def __init__(self, file):
-        self.file = file
-        self.user_data = self.get_credentials(file)
+    def __init__(self):
+        self.user_data = self.get_credentials()
         self.r_instance = self.login()
 
     def login(self):
